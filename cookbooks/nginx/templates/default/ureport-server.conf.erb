@@ -1,0 +1,61 @@
+server {
+        listen       80; 
+        server_name alpha.ureport.org 95.138.162.184;
+        #server_name www.ureport.ug ureport.ug 196.0.26.49 ureport.unicefuganda.org;
+        root /var/www/ureport/ureport_project;
+        access_log  /var/log/nginx/ureport.access.log slim;
+        error_log /var/log/nginx/ureport.error.log debug;
+
+        location / {
+            include uwsgi_params;
+            uwsgi_connect_timeout 15;
+            uwsgi_read_timeout 360;
+
+            if ($request_uri ~* (^(?!(.*(?=/static/.*))|/favicon.ico|/media/.*|/geoserver/.*))) {
+                #uwsgi_pass unix:/var/www/sockets/ureport.sock;
+                uwsgi_pass 0.0.0.0:8001;
+            }
+            if ($request_uri ~* (^/geoserver/.*)) {
+               proxy_pass http://127.0.0.1:8080;		
+            }
+            
+        }
+
+        location /router/receive {
+            include uwsgi_params;
+            keepalive_timeout 0;
+            uwsgi_connect_timeout 15;
+            uwsgi_read_timeout 360;
+            uwsgi_pass 0.0.0.0:8001;
+        }
+
+        location /static/ {
+            access_log off;
+            # Some basic cache-control for static files to be sent to the browser
+            expires max;
+            add_header Pragma public;
+            add_header Cache-Control "public, must-revalidate, proxy-revalidate";
+            rewrite ^/static/rapidsms/(.*)              /rapidsms/lib/rapidsms/static/$1 break;
+            rewrite ^/static/auth/(.*)                  /rapidsms_auth/auth/static/$1 break;
+            rewrite ^/static/authsites/(.*)             /rapidsms_authsites/authsites/static/$1 break;
+            rewrite ^/static/contact/(.*)               /rapidsms_contact/contact/static/$1 break;
+            rewrite ^/static/cvs/(.*)                   /rapidsms_cvs/cvs/static/$1 break;
+            rewrite ^/static/generic/(.*)               /rapidsms_generic/generic/static/$1 break;
+            rewrite ^/static/healthmodels/(.*)          /rapidsms_healthmodels/healthmodels/static/$1 break;
+            rewrite ^/static/rapidsms_httprouter/(.*)   /rapidsms_httprouter_src/rapidsms_httprouter/static/$1 break;
+            rewrite ^/static/poll/(.*)                  /rapidsms_polls/poll/static/$1 break;
+            rewrite ^/static/script/(.*)                /rapidsms_script/script/static/$1 break;
+            rewrite ^/static/uganda_common/(.*)         /rapidsms_uganda_common/uganda_common/static/$1 break;
+	    rewrite ^/static/rapidsms_xforms/(.*)       /rapidsms_xforms_src/rapidsms_xforms/static/$1 break;
+            rewrite ^/static/ureport/(.*)                /rapidsms_ureport/ureport/static/$1 break;
+            rewrite ^/static/message_classifier/(.*)     /rapidsms_message_classifier/message_classifier/static/$1 break;
+
+            rewrite ^/static/media/(.*)                 /media/$1 break;
+            rewrite ^/favicon.ico$                      /favicon.ico$1 break;
+
+        }
+
+        location ~ /\.          { access_log off; log_not_found off; deny all; }
+
+}
+
