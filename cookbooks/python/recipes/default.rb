@@ -33,11 +33,13 @@ end
 end
   
 execute "installing virtualenv" do
-	command "pip install virtualenv"
+  command "pip install virtualenv"
   action :run
 end
 
 execute "creating edtrac virtualenv" do
-	command "virtualenv ~/edtrac_env --python=python2.6"
+  cwd "/home/vagrant"
+	command "virtualenv edtrac_env --python=python2.6"
+  action :run
 end
 
