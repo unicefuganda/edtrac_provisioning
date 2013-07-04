@@ -26,7 +26,7 @@ execute "installing updates" do
   action :run
 end
 
-%w{python2.6 python2.6-dev python-pip}.each do |pkg|
+%w{build-essential python-setuptools python2.6 python2.6-dev python-pip libpq-dev libxml2 libxml2-dev libxslt1-dev}.each do |pkg|
   package pkg do
     action :install
   end
@@ -39,7 +39,12 @@ end
 
 execute "creating edtrac virtualenv" do
   cwd "/home/vagrant"
-	command "virtualenv edtrac_env --python=python2.6"
+  command "virtualenv edtrac_env --python=python2.6"
+  action :run
+end
+
+execute "owning the virtualenv" do
+  command "sudo chown vagrant:vagrant /home/vagrant/edtrac_env/ -R"
   action :run
 end
 

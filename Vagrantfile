@@ -48,44 +48,17 @@ Vagrant.configure("2") do |config|
   # View the documentation for the provider you're using for more
   # information on available options.
 
-  # Enable provisioning with Puppet stand alone.  Puppet manifests
-  # are contained in a directory path relative to this Vagrantfile.
-  # You will need to create the manifests directory and a manifest in
-  # the file edtrac_box.pp in the manifests_path directory.
-  #
-  # An example Puppet manifest to provision the message of the day:
-  #
-  # # group { "puppet":
-  # #   ensure => "present",
-  # # }
-  # #
-  # # File { owner => 0, group => 0, mode => 0644 }
-  # #
-  # # file { '/etc/motd':
-  # #   content => "Welcome to your Vagrant-built virtual machine!
-  # #               Managed by Puppet.\n"
-  # # }
-  #
-  # config.vm.provision :puppet do |puppet|
-  #   puppet.manifests_path = "manifests"
-  #   puppet.manifest_file  = "edtrac_box.pp"
-  # end
-
-  # Enable provisioning with chef solo, specifying a cookbooks path, roles
-  # path, and data_bags path (all relative to this Vagrantfile), and adding
-  # some recipes and/or roles.
-  #
   config.vm.provision :chef_solo do |chef|
     chef.cookbooks_path = "cookbooks"
     # chef.roles_path = "../my-recipes/roles"
     # chef.data_bags_path = "../my-recipes/data_bags"
-    # chef.add_recipe "postgresql"
-    # chef.add_recipe "nginx"
-    # chef.add_recipe "git"
-    # chef.add_recipe "uwsgi"
-    # chef.add_recipe "python"
+    chef.add_recipe "postgresql"
+    chef.add_recipe "nginx"
+    chef.add_recipe "git"
+    chef.add_recipe "uwsgi"
+    chef.add_recipe "python"
     chef.add_recipe "edtrac"
-    # chef.add_role "web"
+
   #   # You may also specify custom JSON attributes:
     # chef.json = { :mysql_password => "foo" }
   end

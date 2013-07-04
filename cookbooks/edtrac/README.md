@@ -1,9 +1,6 @@
 edtrac Cookbook
 ===============
-TODO: Enter the cookbook description here.
-
-e.g.
-This cookbook makes your favorite breakfast sandwhich.
+This cookbook clone the Edutrac Source and updates all the submodules 
 
 Requirements
 ------------
