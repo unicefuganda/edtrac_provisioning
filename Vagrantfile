@@ -52,7 +52,7 @@ Vagrant.configure("2") do |config|
     chef.cookbooks_path = "cookbooks"
     # chef.roles_path = "../my-recipes/roles"
     # chef.data_bags_path = "../my-recipes/data_bags"
-    chef.add_recipe "postgresql"
+    chef.add_recipe "postgres"
     chef.add_recipe "nginx"
     chef.add_recipe "git"
     chef.add_recipe "uwsgi"
