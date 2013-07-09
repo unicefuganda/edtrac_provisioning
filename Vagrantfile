@@ -58,9 +58,6 @@ Vagrant.configure("2") do |config|
     chef.add_recipe "uwsgi"
     chef.add_recipe "python"
     chef.add_recipe "edtrac"
-
-  #   # You may also specify custom JSON attributes:
-    # chef.json = { :mysql_password => "foo" }
   end
 
   # Enable provisioning with chef server, specifying the chef server URL,
