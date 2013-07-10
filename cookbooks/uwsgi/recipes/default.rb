@@ -10,12 +10,12 @@ package "uwsgi-plugin-python" do
   action :install
 end
 
-template "/etc/uwsgi/apps-enabled/ureport.ini" do
-  source "ureport.ini.erb"
+template "/etc/uwsgi/apps-enabled/edtrac.ini" do
+  source "edtrac.ini.erb"
 end
 
-template "/etc/uwsgi/apps-available/ureport.ini" do
-  source "ureport.ini.erb"
+template "/etc/uwsgi/apps-available/edtrac.ini" do
+  source "edtrac.ini.erb"
 end
 
 execute "Clean up data Socket dir if it exists" do
