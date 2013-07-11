@@ -10,14 +10,12 @@ package "nginx" do
 	action :install
 end
 
-
 template "/etc/nginx/nginx.conf" do
   source "nginx.conf.erb"
 end
 
-
-template "/etc/nginx/conf.d/ureport-server.conf" do
-  source "ureport-server.conf.erb"
+template "/etc/nginx/conf.d/edtrac-server.conf" do
+  source "edtrac-server.conf.erb"
 end
 
 service "nginx" do
