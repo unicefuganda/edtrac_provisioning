@@ -27,6 +27,7 @@ execute "Make data dir" do
   command "mkdir /var/www/ && mkdir /var/www/sockets"
   action :run
 end
+
 service "uwsgi" do
 	action :start
 end

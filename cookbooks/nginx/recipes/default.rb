@@ -14,8 +14,8 @@ template "/etc/nginx/nginx.conf" do
   source "nginx.conf.erb"
 end
 
-template "/etc/nginx/conf.d/edtrac-server.conf" do
-  source "edtrac-server.conf.erb"
+template "/etc/nginx/conf.d/nginx.conf" do
+  source "edtrac_nginx.conf.erb"
 end
 
 service "nginx" do
