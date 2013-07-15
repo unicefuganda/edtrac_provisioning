@@ -30,3 +30,7 @@ execute "activating virtualenv and installing dependencies" do
   command "bash -c 'source /home/vagrant/edtrac_env/bin/activate && pip install -r requirements.pip'"
   action :run
 end
+
+template "/home/vagrant/edtrac/edtrac_project/localsettings.py" do
+  source "localsettings.py.erb"
+end
