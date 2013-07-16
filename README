@@ -1,0 +1,11 @@
+Infrastructure autoomation code for reproducing a production like environment for Edutrac
+
+You need to install the following on your system 
+1. VirtualBox
+2. Vagrant
+
+Instructions
+1. Clone this repo
+2. Rename the Vagrant.example to Vagrant 
+3. Incase you have a lucid32 image on your local system, you will need to change line 10 and point it to the filesystem path where your image is located.
+4. In the edutrac_provision directory run the command "vagrant up" and the wait for vagrant to provision
