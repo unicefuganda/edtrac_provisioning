@@ -5,10 +5,9 @@ Vagrant.configure("2") do |config|
 
   config.vm.box = "edtrac_box"
 
-  #YOU NEED CHANGE THIS TO A DIFFERENT LOCATION WHERE YOU WILL BE LOADING THE IMAGE FROM
-  #UNCOMMENT THE NEXT LINE IF YOU WANT TO DOWNLOAD THE IMAGE FROM THE INTERNET
-  # config.vm.box_url = "http://files.vagrantup.com/lucid32.box"
-  config.vm.box_url = "/Users/austiine/vagrant_box_images/lucid32.box"
+  #YOU NEED CHANGE THIS TO A DIFFERENT LOCATION WHERE YOU WILL BE LOADING THE IMAGE FROM 
+  #THE DEFAULT WILL DO IF YOU DONT HAVE AN IMAGE ON YOUR SYSTEM
+  config.vm.box_url = "http://files.vagrantup.com/lucid32.box"
 
   config.vm.network :forwarded_port, guest: 8000, host: 8000
 
