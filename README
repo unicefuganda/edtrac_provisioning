@@ -4,8 +4,13 @@ You need to install the following on your system
 1. VirtualBox
 2. Vagrant
 
-Instructions
-1. Clone this repo
-2. Rename the Vagrant.example to Vagrant 
-3. Incase you have a lucid32 image on your local system, you will need to change line 10 and point it to the filesystem path where your image is located.
-4. In the edutrac_provision directory run the command "vagrant up" and the wait for vagrant to provision
+Instructions 
+1. After installing Vagrant and Virtual Box
+2. create the edtrac_box virtual box by running this commant 
+	vagrant box add edtrac_box /path/to/your/vagrantimage.box
+	(the path could be a url to the box or path on the filesystem if you have the box downloaded on your machine)
+3. Copy the Vagrantfile.example from edtrack_provisioning and put it into you project root 
+4. Rename it from Vagrantfile.example to Vagrantfile
+5. Edit the Vagrantfile and point to the path to your vagrantbox if you have it on your machine if  you don't, (Skip this step) you will need a good network connection though.
+6. Edit the Vagrantfile and point to the path to your cookbooks e.g ~/your_username/chef-repos/edtrac_provisioning/cookbooks/  
+7. Now run vagrant up and you are good to go!
