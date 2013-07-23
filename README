@@ -18,6 +18,6 @@ Instructions
 NOTE:
 
 After a successfull provisioning, you may want to avoid provisioning every time you boot vagrant with out re-provisioning. 
-To so run boot vagrant using the command below:
+To do so boot vagrant using the command below:
 
 vagrant up --no-provision
