@@ -6,7 +6,7 @@ You need to install the following on your system
 
 Instructions 
 1. After installing Vagrant and Virtual Box
-2. create the edtrac_box virtual box by running this commant 
+2. create the edtrac_box virtual box by running this command 
 	vagrant box add edtrac_box /path/to/your/vagrantimage.box
 	(the path could be a url to the box or path on the filesystem if you have the box downloaded on your machine)
 3. Copy the Vagrantfile.example from edtrack_provisioning and put it into you project root 
@@ -14,3 +14,10 @@ Instructions
 5. Edit the Vagrantfile and point to the path to your vagrantbox if you have it on your machine if  you don't, (Skip this step) you will need a good network connection though.
 6. Edit the Vagrantfile and point to the path to your cookbooks e.g ~/your_username/chef-repos/edtrac_provisioning/cookbooks/  
 7. Now run vagrant up and you are good to go!
+
+NOTE:
+
+After a successfull provisioning, you may want to avoid provisioning every time you boot vagrant with out re-provisioning. 
+To so run boot vagrant using the command below:
+
+vagrant up --no-provision
