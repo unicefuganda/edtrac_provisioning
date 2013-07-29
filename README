@@ -10,7 +10,8 @@ Instructions
 	vagrant box add edtrac_box /path/to/your/vagrantimage.box
 	(the path could be a url to the box or path on the filesystem if you have the box downloaded on your machine)
 3. Copy the Vagrantfile.example from edtrack_provisioning and put it into you project root 
-4. Rename it from Vagrantfile.example to Vagrantfile
+4. Rename it from Vagrantfile.example_windows/unix to Vagrantfile
+NOTE : if you are using windows, just be sure to use the unix paths style e.g C://path/to/blah/blah forward slashes instead of the default C:\path\to\blah for windows
 5. Edit the Vagrantfile and point to the path to your vagrantbox if you have it on your machine if  you don't, (Skip this step) you will need a good network connection though.
 6. Edit the Vagrantfile and point to the path to your cookbooks e.g ~/your_username/chef-repos/edtrac_provisioning/cookbooks/  
 7. Now run vagrant up and you are good to go!
