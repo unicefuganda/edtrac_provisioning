@@ -1,0 +1,24 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+
+  config.vm.box = "edtrac_box"
+
+  #YOU NEED CHANGE THIS TO A DIFFERENT LOCATION WHERE YOU WILL BE LOADING THE IMAGE FROM 
+  #THE DEFAULT WILL DO IF YOU DONT HAVE AN IMAGE ON YOUR SYSTEM
+  config.vm.box_url = "http://files.vagrantup.com/lucid32.box"
+
+  config.vm.network :forwarded_port, guest: 8000, host: 8000
+
+  config.vm.provision :chef_solo do |chef|
+    chef.cookbooks_path = "cookbooks"
+    chef.add_recipe "postgres"
+    chef.add_recipe "git"
+    chef.add_recipe "python"
+    chef.add_recipe "edtrac"
+    chef.add_recipe "uwsgi"
+    chef.add_recipe "nginx"
+  end
+
+end
