@@ -1,4 +1,4 @@
-Infrastructure autoomation code for reproducing a production like environment for Edutrac
+Infrastructure automation code for reproducing a production like environment for Edutrac
 
 You need to install the following on your system 
 1. VirtualBox
@@ -9,11 +9,12 @@ Instructions
 2. create the edtrac_box virtual box by running this command 
 	vagrant box add edtrac_box /path/to/your/vagrantimage.box
 	(the path could be a url to the box or path on the filesystem if you have the box downloaded on your machine)
-3. cd into your project root and run command vagrant init
-4. Replace the contents of  Vagrantfile by those in Vagrantfile.exapmle in edtrack_provisioning 
-5. Edit the Vagrantfile and point to the path to your vagrantbox if you have it on your machine if  you don't, (Skip this step) you will need a good network connection though.
-6. Edit the Vagrantfile and point to the path to your cookbooks e.g ~/your_username/chef-repos/edtrac_provisioning/cookbooks/  
-7. Now run vagrant up and you are good to go!
+3. vagrant init on the root of edtrack_provisioning.
+4. Replace the contents of  Vagrantfile by those in Vagrantfile.example
+5. Edit the Vagrantfile -> uncomment and update the line of synced_folder to map the edtrac project to /vagrant
+6. Edit the Vagrantfile and point to the path to your vagrantbox if you have it on your machine if  you don't, (Skip this step) you will need a good network connection though.
+7. Edit the Vagrantfile and point to the path to your cookbooks e.g ~/your_username/chef-repos/edtrac_provisioning/cookbooks/  
+8. Now run vagrant up and you are good to go!
 
 NOTE:
 
