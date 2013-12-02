@@ -3,13 +3,8 @@
 local_folder_to_map_to_source_code = "/path/to/edtrac/"
 Vagrant.configure("2") do |config|
 
-  config.vm.box = "edtrac_box"
-
-  #YOU NEED CHANGE THIS TO A DIFFERENT LOCATION WHERE YOU WILL BE LOADING THE IMAGE FROM 
-  #THE DEFAULT WILL DO IF YOU DONT HAVE AN IMAGE ON YOUR SYSTEM
+  config.vm.box = "precise64"
   config.vm.box_url = "http://files.vagrantup.com/precise64.box"
-  #If you provision on the edtrac_provisioning project, you would need the following line
-  #config.vm.synced_folder local_folder_to_map_to_source_code, "/vagrant/"
   config.vm.network :forwarded_port, guest: 8000, host: 8000
 
   config.vm.provision :chef_solo do |chef|
