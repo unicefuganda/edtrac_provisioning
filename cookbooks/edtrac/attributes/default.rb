@@ -1,0 +1,1 @@
+default['edtrac']['settings'] = 'settings.production'

@@ -1,13 +1,19 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 local_folder_to_map_to_source_code = "/path/to/edtrac/"
-Vagrant.configure("2") do |config|
 
+Vagrant.configure("2") do |config|
   config.vm.box = "precise64"
   config.vm.box_url = "http://files.vagrantup.com/precise64.box"
+  config.vm.synced_folder local_folder_to_map_to_source_code, "/vagrant/"
   config.vm.network :forwarded_port, guest: 8000, host: 8000
 
   config.vm.provision :chef_solo do |chef|
+    chef.json = {
+        'edtrac' => {
+            'settings' => 'settings.travis'
+        },
+    }
     chef.cookbooks_path = "cookbooks"
     chef.add_recipe "postgres"
     chef.add_recipe "git"

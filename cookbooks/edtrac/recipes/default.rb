@@ -1,11 +1,20 @@
+
+ENV['DJANGO_SETTINGS_MODULE'] = node["edtrac"]["settings"]
+
 execute "activating virtualenv and installing dependencies" do
   cwd "/vagrant"
   command "bash -c 'source /home/vagrant/edtrac_env/bin/activate && pip install -r requirements.pip'"
   action :run
 end
 
-template "/vagrant/edtrac_project/localsettings.py" do
-  source "localsettings.py.erb"
+directory "/var/log/edtrac" do
+  mode "0644"
+  action :create
+end
+
+file "/var/log/edtrac/edtrac.log" do
+  mode "0644"
+  action :create
 end
 
 execute "running migrations" do

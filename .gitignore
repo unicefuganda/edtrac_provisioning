@@ -1,3 +1,4 @@
 .vagrant/*
 Vagrantfile
 package.box
+.DS_Store
